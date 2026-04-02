@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claudeを使いこなす第一歩！基本操作とプロンプトのコツ — Mika AI Lab</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <div class="logo"><a href="../index.html">🤖 Mika AI Lab</a><span>AIの最前線を、わかりやすく。</span></div>
+    <nav>
+      <a href="../index.html">記事</a>
+      <a href="../about.html">About</a>
+      <a href="https://note.com/mika_ai" target="_blank">note</a>
+      <a href="https://www.youtube.com/channel/UCh2tImp-N_z3zmiNdkvVjBQ" target="_blank">YouTube</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <div class="article-date">2026年4月2日</div>
+  <div class="article-title">Claudeを使いこなす第一歩！基本操作とプロンプトのコツ</div>
+  <div class="article-tags">
+    <span class="post-tag">Claude</span>
+    <span class="post-tag">AIツール</span>
+    <span class="post-tag">プロンプト</span>
+    <span class="post-tag">入門</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>前回の記事では、ClaudeとChatGPTの決定的な違いを理解し、Claudeの「安全性」「長文読解」「推論」といった強みを知ることができました。</p>
+    <p>今日からはいよいよ実践編。Claudeのチャット画面の基本的な使い方から、AIの能力を最大限に引き出すための「プロンプト（指示文）」のコツまでを、初心者にも分かりやすく解説します。</p>
+    <p>「AIを触るのは初めて」という方も、「もっとClaudeを使いこなしたい」という方も、この記事を読めばClaudeとの会話が劇的に変わるはずです。</p>
+
+    <h2>Claudeのチャット画面を歩く</h2>
+    <p>まずはClaudeのWebインターフェースを見ていきましょう。基本的なレイアウトは他のチャットAIと似ていますが、いくつか特徴的な機能があります。</p>
+    <img src="../images/claude-chat-full.jpg" alt="Claudeのチャット画面全体">
+    <p class="caption">画像：Claudeのチャット画面</p>
+    <ol>
+      <li><strong>「New chat」ボタン：</strong> 新しい会話を始める際にクリックします。デリケートな内容や完全に異なるタスクを行う場合は、新しいチャットで始めた方がAIのコンテキストがクリアになり、より良い回答が得られます。</li>
+      <li><strong>サイドバー：</strong> 過去のチャット履歴や、最近追加された「Projects」「Artifacts」「Code」といった機能へのリンクが表示されます。特に「Projects」は、後述するComputer UseやDispatch機能の基盤となる重要な要素です。</li>
+      <li><strong>モデル選択（例: Sonnet 4.6）：</strong> 画面下部、入力ボックスの右上に現在使用しているモデルが表示されています。FreeプランではSonnetがメインですが、Pro/MaxプランではOpusなど上位モデルを選択できます。（※これは現時点での情報であり、Anthropicのプラン変更により異なる場合があります）</li>
+      <li><strong>プロンプト入力ボックス：</strong> あなたがClaudeに話しかける場所です。「Write your prompt to Claude」と表示されています。</li>
+      <li><strong>ファイルアップロードボタン：</strong> 入力ボックスの左にあるクリップアイコン（または＋アイコン）から、PDFファイル、テキストファイル、画像ファイルなどをアップロードできます。Claudeの長文読解力を活かす上で非常に重要な機能です。</li>
+    </ol>
+
+    <h2>Claudeに話しかける「プロンプトの基本」</h2>
+    <p>Claudeの能力を引き出すには、適切な「プロンプト」を与えることが不可欠です。AIとの会話は、人間との会話とは少し違います。以下の5つのポイントを意識してみましょう。</p>
+
+    <h3>1. 明確性と具体性（Clear and Specific）</h3>
+    <p>曖昧な指示はAIを迷わせます。「何か書いて」ではなく、「〇〇について、□□の視点で、～文字程度で書いて」のように具体的に指示しましょう。</p>
+    <ul>
+      <li><strong>悪い例：</strong> 「日本の経済について教えて。」</li>
+      <li><strong>良い例：</strong> 「2025年の日本の経済情勢について、新NISAが個人消費に与える影響に焦点を当てて、1000字程度で解説してください。ターゲット読者は投資初心者です。」</li>
+    </ul>
+
+    <h3>2. 文脈の提供（Provide Context）</h3>
+    <p>AIは「何を話しているのか」を理解するために文脈が必要です。特に前の会話から続けて質問する場合でも、重要な情報は簡潔に再提示しましょう。</p>
+
+    <h3>3. 役割の指定（Assign a Role）</h3>
+    <p>Claudeに特定の役割（ペルソナ）を与えることで、回答の質とトーンをコントロールできます。</p>
+
+    <h3>4. 制約条件とフォーマット（Set Constraints and Format）</h3>
+    <p>出力の長さ、形式（箇条書き、表、JSONなど）、含めるべき要素や避けるべき要素を明確に指定します。</p>
+
+    <h3>5. ファイルアップロードの活用</h3>
+    <p>Claudeの最大の強みの一つである長文読解力を活かすために、関連する資料（PDF、テキストファイルなど）を積極的にアップロードしましょう。これにより、AIがより正確で深い理解に基づいた回答を生成できます。</p>
+    <img src="../images/claude-upload-button.jpg" alt="Claudeのファイルアップロードボタン">
+    <p class="caption">画像：入力ボックス左の「＋」ボタンからファイルをアップロード</p>
+
+    <h3>実践！簡単なプロンプト例</h3>
+    <p><strong>例1：PDF資料の要約</strong></p>
+    <ol>
+      <li>Claudeのチャット画面でファイルアップロードボタンをクリック。</li>
+      <li>要約したいPDFファイルを選択してアップロード。</li>
+      <li>プロンプトボックスに「このPDF資料の主要なポイントを300字程度で要約してください。」と入力し、送信。</li>
+    </ol>
+    <p><strong>例2：アイデア出し（役割指定と制約付き）</strong></p>
+    <img src="../images/claude-prompt-input.jpg" alt="Claudeへのプロンプト入力例">
+    <p class="caption">画像：具体的なプロンプトを入力している画面</p>
+    <ol>
+      <li>プロンプトボックスに「あなたは日本の若者向けマーケティングの専門家です。新しいAIツールを10代〜20代の女性にアピールするためのSNSキャンペーンアイデアを5つ提案してください。各アイデアには、ターゲット層に響くキャッチコピーと具体的な実施内容を含めてください。」と入力し、送信。</li>
+    </ol>
+
+    <h2>まとめと次回予告</h2>
+    <p>今回はClaudeの基本的な使い方と、AIを賢く使うためのプロンプトの基本原則を学びました。明確な指示、文脈の提供、役割指定、制約条件の設定、そしてファイルアップロードの活用。これらのコツを意識するだけで、Claudeはあなたの強力なパートナーになるはずです。</p>
+
+    <p>次回は「長文読解と要約の神！「論文や資料を瞬時に理解する」実践術」と題して、Claudeの真骨頂である長文処理能力にフォーカスし、具体的な資料を効率的にインプット・アウトプットする方法を深掘りします。</p>
+
+    <p><span class="post-tag">#Claude</span> <span class="post-tag">#AIツール</span> <span class="post-tag">#プロンプト</span> <span class="post-tag">#入門</span> <span class="post-tag">#使い方</span></p>
+
+  </div>
+
+  <div class="note-cta">
+    <p>この記事はnoteでも読めます。コメント・フォローはnoteで！</p>
+    <a href="https://note.com/mika_ai" target="_blank">noteで読む・コメントする →</a>
+  </div>
+
+  <div class="share-buttons">
+    <a class="share-btn share-x" href="https://twitter.com/intent/tweet?text=Claudeを使いこなす第一歩！基本操作とプロンプトのコツ&url=https://mika-ai-lab.github.io/posts/005-claude-basic-ops.html" target="_blank">𝕏 シェア</a>
+    <a class="share-btn share-line" href="https://line.me/R/msg/text/?Claudeを使いこなす第一歩！基本操作とプロンプトのコツ https://mika-ai-lab.github.io/posts/005-claude-basic-ops.html" target="_blank">LINE シェア</a>
+  </div>
+</main>
+<footer>
+  © 2026 Mika AI Lab · <a href="https://note.com/mika_ai">note</a> · <a href="https://x.com/MikaAI_Lab">X</a> · <a href="https://www.youtube.com/channel/UCh2tImp-N_z3zmiNdkvVjBQ">YouTube</a>
+</footer>
+</body>
+</html>
